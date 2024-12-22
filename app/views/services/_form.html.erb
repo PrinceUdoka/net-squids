@@ -1,10 +1,10 @@
-<%= form_with(model: node, class: "contents") do |form| %>
-  <% if node.errors.any? %>
+<%= form_with(model: service, class: "contents") do |form| %>
+  <% if service.errors.any? %>
     <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
-      <h2><%= pluralize(node.errors.count, "error") %> prohibited this node from being saved:</h2>
+      <h2><%= pluralize(service.errors.count, "error") %> prohibited this service from being saved:</h2>
 
       <ul>
-        <% node.errors.each do |error| %>
+        <% service.errors.each do |error| %>
           <li><%= error.full_message %></li>
         <% end %>
       </ul>
@@ -22,8 +22,8 @@
   </div>
 
   <div class="my-5">
-    <%= form.label :network_id %>
-    <%= form.collection_select(:network_id, Network.all, :id, :name, :prompt => 'Select a network', 
+    <%= form.label :node_id %>
+    <%= form.collection_select(:node_id, Node.all, :id, :name, :prompt => 'Select a node', 
     class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full" ) %>
   </div>
 

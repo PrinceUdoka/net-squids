@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_12_22_194800) do
+ActiveRecord::Schema[8.0].define(version: 2024_12_22_205244) do
   create_table "networks", force: :cascade do |t|
     t.string "name"
     t.string "ip"
@@ -27,5 +27,15 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_22_194800) do
     t.index ["network_id"], name: "index_nodes_on_network_id"
   end
 
+  create_table "services", force: :cascade do |t|
+    t.string "name"
+    t.string "ip"
+    t.integer "node_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["node_id"], name: "index_services_on_node_id"
+  end
+
   add_foreign_key "nodes", "networks"
+  add_foreign_key "services", "nodes"
 end
