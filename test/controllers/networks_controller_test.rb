@@ -16,8 +16,10 @@ class NetworksControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create network" do
+    @network_attributes = FactoryBot.attributes_for(:network)
+
     assert_difference("Network.count") do
-      post networks_url, params: { network: { ip: @network.ip, name: @network.name } }
+      post networks_url, params: { network: @network_attributes }
     end
 
     assert_redirected_to network_url(Network.last)

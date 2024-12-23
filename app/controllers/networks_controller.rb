@@ -65,6 +65,6 @@ class NetworksController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def network_params
-      params.expect(network: [ :name, :ip ])
+      params.expect(network: [ :name, :ip, :mask ])
     end
 end

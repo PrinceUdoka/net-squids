@@ -10,12 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_12_22_205244) do
+ActiveRecord::Schema[8.0].define(version: 2024_12_23_195225) do
   create_table "networks", force: :cascade do |t|
     t.string "name"
     t.string "ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "mask", null: false
   end
 
   create_table "nodes", force: :cascade do |t|

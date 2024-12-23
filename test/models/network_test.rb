@@ -21,4 +21,11 @@ class NetworkTest < ActiveSupport::TestCase
     assert_not @network.valid?
     assert_not_empty @network.errors[:ip]
   end
+
+  test "invalid with without mask" do
+    @network.mask = nil
+
+    assert_not @network.valid?
+    assert_not_empty @network.errors[:mask]
+  end
 end
