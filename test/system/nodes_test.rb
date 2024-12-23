@@ -2,7 +2,7 @@ require "application_system_test_case"
 
 class NodesTest < ApplicationSystemTestCase
   setup do
-    @node = nodes(:one)
+    @node = FactoryBot.create(:node)
   end
 
   test "visiting the index" do
@@ -16,7 +16,7 @@ class NodesTest < ApplicationSystemTestCase
 
     fill_in "Ip", with: @node.ip
     fill_in "Name", with: @node.name
-    fill_in "Network", with: @node.network_id
+    select @node.network.name, from: "node_network_id"
     click_on "Create Node"
 
     assert_text "Node was successfully created"
@@ -29,7 +29,7 @@ class NodesTest < ApplicationSystemTestCase
 
     fill_in "Ip", with: @node.ip
     fill_in "Name", with: @node.name
-    fill_in "Network", with: @node.network_id
+    select @node.network.name, from: "node_network_id"
     click_on "Update Node"
 
     assert_text "Node was successfully updated"

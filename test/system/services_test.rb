@@ -2,7 +2,7 @@ require "application_system_test_case"
 
 class ServicesTest < ApplicationSystemTestCase
   setup do
-    @service = services(:one)
+    @service = FactoryBot.create(:service)
   end
 
   test "visiting the index" do
@@ -16,7 +16,7 @@ class ServicesTest < ApplicationSystemTestCase
 
     fill_in "Ip", with: @service.ip
     fill_in "Name", with: @service.name
-    fill_in "Node", with: @service.node_id
+    select @service.node.name, from: "service_node_id"
     click_on "Create Service"
 
     assert_text "Service was successfully created"
@@ -29,7 +29,7 @@ class ServicesTest < ApplicationSystemTestCase
 
     fill_in "Ip", with: @service.ip
     fill_in "Name", with: @service.name
-    fill_in "Node", with: @service.node_id
+    select @service.node.name, from: "service_node_id"
     click_on "Update Service"
 
     assert_text "Service was successfully updated"

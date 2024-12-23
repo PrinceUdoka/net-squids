@@ -2,7 +2,7 @@ require "application_system_test_case"
 
 class NetworksTest < ApplicationSystemTestCase
   setup do
-    @network = networks(:one)
+    @network = FactoryBot.create(:network)
   end
 
   test "visiting the index" do
@@ -16,6 +16,7 @@ class NetworksTest < ApplicationSystemTestCase
 
     fill_in "Ip", with: @network.ip
     fill_in "Name", with: @network.name
+    fill_in "Mask", with: @network.mask
     click_on "Create Network"
 
     assert_text "Network was successfully created"
@@ -28,6 +29,7 @@ class NetworksTest < ApplicationSystemTestCase
 
     fill_in "Ip", with: @network.ip
     fill_in "Name", with: @network.name
+    fill_in "Mask", with: @network.mask
     click_on "Update Network"
 
     assert_text "Network was successfully updated"
