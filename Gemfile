@@ -65,4 +65,4 @@ group :development, :test do
   gem "pry"
 end
 
-gem "tailwindcss-rails", "~> 3.0"
+gem "tailwindcss-rails", "~> 4.1"
